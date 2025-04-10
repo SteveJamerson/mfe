@@ -2,15 +2,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { ModuleFederationPlugin } = require('webpack').container
 
 module.exports = (env) => {
-  const isRemote = env.remote === true || env.remote === 'true'
+  const isLocal = env.local === true || env.local === 'true'
 
-  const remoteV19 = isRemote
-    ? 'https://stevejamerson.github.io/mfe/mfe_app_v19/remoteEntry.js'
-    : 'http://localhost:2001/remoteEntry.js'
+  const remoteV19 = isLocal
+    ? 'http://localhost:2001/remoteEntry.js'
+    : 'https://stevejamerson.github.io/mfe/mfe_app_v19/remoteEntry.js'
 
-  const remoteV17 = isRemote
-    ? 'https://stevejamerson.github.io/mfe/mfe_app_v17/remoteEntry.js'
-    : 'http://localhost:2002/remoteEntry.js'
+  const remoteV17 = isLocal
+    ? 'http://localhost:2002/remoteEntry.js'
+    : 'https://stevejamerson.github.io/mfe/mfe_app_v17/remoteEntry.js'
 
   return {
     mode: 'development',
