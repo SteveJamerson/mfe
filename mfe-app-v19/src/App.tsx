@@ -5,7 +5,7 @@ import { CounterProvider } from './contexts/count.context'
 const App: FunctionComponent = () => {
   return (
     <CounterProvider>
-      <h2>Microfrontend Application Version 19</h2>
+      <h2>Microfrontend Application - Version 19</h2>
       <Counter />
     </CounterProvider>
   )

@@ -5,7 +5,7 @@ import Counter from './components/count'
 const App: FunctionComponent = () => {
   return (
     <CounterProvider>
-      <h2>Microfrontend Application Version 17 </h2>
+      <h2>Microfrontend Application - Version 17 </h2>
       <Counter />
     </CounterProvider>
   )
