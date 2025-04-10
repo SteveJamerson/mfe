@@ -542,7 +542,7 @@ module.exports = new Promise((resolve, reject) => {
 /******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
-/******/ 		__webpack_require__.p = "https://stevejamerson.github.io/mfe/root/";
+/******/ 		__webpack_require__.p = "https://stevejamerson.github.io/mfe/";
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/consumes */
