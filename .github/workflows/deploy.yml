@@ -1,0 +1,55 @@
+name: Github Pages Deploy
+
+on:
+  push:
+    branches:
+      - "main"
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Create Build
+        working-directory: ./
+        run: |
+          mkdir -p dist/root
+          mkdir -p dist/mfe_app_v17
+          mkdir -p dist/mfe_app_v19
+
+      - name: Install and Build mfe_app_v17
+        working-directory: ./mfe-app-v17
+        run: |
+          npm install
+          npm run build
+          cp dist/* ../dist/mfe_app_v17/
+
+      - name: Install and Build mfe_app_v19
+        working-directory: ./mfe-app-v19
+        run: |
+          npm install
+          npm run build
+          cp dist/* ../dist/mfe_app_v19/
+
+      - name: Install and Build root
+        working-directory: ./mfe-root
+        run: |
+          npm install
+          npm run build
+          cp dist/* ../dist/
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4.5.0
+        with:
+          branch: deploy
+          folder: dist
