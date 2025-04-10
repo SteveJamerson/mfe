@@ -18,9 +18,7 @@ module.exports = (env = {}) => {
           historyApiFallback: true,
         },
     output: {
-      filename: '[hash].js',
       publicPath,
-      clean: true,
     },
     module: {
       rules: [
