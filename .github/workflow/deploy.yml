@@ -25,24 +25,21 @@ jobs:
         run: |
           npm install
           npm run build
-          mkdir -p ../../../dist/mfe_app_v17
-          cp -r dist/* ../../../dist/mfe_app_v17/
+          cp -r dist/* dist/mfe_app_v17/
 
       - name: Install and Build mfe_app_v19
         working-directory: mfe/mfe_app_v19
         run: |
           npm install
           npm run build
-          mkdir -p ../../../dist/mfe_app_v19
-          cp -r dist/* ../../../dist/mfe_app_v19/
+          cp -r dist/* dist/mfe_app_v19/
 
       - name: Install and Build root
         working-directory: mfe/root
         run: |
           npm install
           npm run build
-          mkdir -p ../../../dist/root
-          cp -r dist/* ../../../dist/root/
+          cp -r dist/* dist/root/
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.5.0
