@@ -1,0 +1,40 @@
+name: Build and Deploy MFEs
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        app: [root, mfe_app_v19, mfe_app_v17]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install deps
+        working-directory: mfe/${{ matrix.app }}
+        run: npm install
+
+      - name: Build
+        working-directory: mfe/${{ matrix.app }}
+        run: npm run build
+
+      - name: Copy dist to deployment folder
+        run: |
+          mkdir -p deploy/${{ matrix.app }}
+          cp -r mfe/${{ matrix.app }}/dist/* deploy/${{ matrix.app }}/
+
+      - name: Deploy to GitHub Pages
+        if: matrix.app == 'root'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./deploy

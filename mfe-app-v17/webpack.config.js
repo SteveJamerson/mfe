@@ -10,7 +10,8 @@ module.exports = {
   },
   output: {
     filename: '[hash].js',
-    publicPath: 'http://localhost:2002/',
+    // publicPath: 'http://localhost:2002/',
+    publicPath: 'https://stevejamerson.github.io/mfe/mfe_app_v17/',
     clean: true,
   },
   module: {

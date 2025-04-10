@@ -9,7 +9,8 @@ module.exports = {
     historyApiFallback: true,
   },
   output: {
-    publicPath: 'http://localhost:2000/',
+    // publicPath: 'http://localhost:2000/',
+    publicPath: 'https://stevejamerson.github.io/mfe/root/',
   },
   module: {
     rules: [
@@ -36,8 +37,12 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'root',
       remotes: {
-        mfeAppV19: 'mfe_app_v19@http://localhost:2001/remoteEntry.js',
-        mfeAppV17: 'mfe_app_v17@http://localhost:2002/remoteEntry.js',
+        // mfeAppV19: 'mfe_app_v19@http://localhost:2001/remoteEntry.js',
+        // mfeAppV17: 'mfe_app_v17@http://localhost:2002/remoteEntry.js',
+        mfeAppV19:
+          'mfe_app_v19@https://stevejamerson.github.io/mfe/mfe_app_v19/remoteEntry.js',
+        mfeAppV17:
+          'mfe_app_v17@https://stevejamerson.github.io/mfe/mfe_app_v17/remoteEntry.js',
       },
       shared: {
         react: { singleton: true, eager: true },
